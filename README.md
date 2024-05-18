@@ -36,13 +36,18 @@ Event App is a Flutter application that accesses with Google Log-in and adds use
 - Caches images using `CachedNetworkImage`.
 
 
+
+
 ## Getting Started
+
 
 ### Prerequisites
 
 Ensure you have Flutter installed on your machine. You can download Flutter from [flutter.dev](https://flutter.dev). Follow the official documentation for installation instructions.
 
 Please make sure to use the latest version of Flutter 3.22.0
+
+
 
 ### Installation
 
@@ -51,7 +56,21 @@ Please make sure to use the latest version of Flutter 3.22.0
 git clone https://github.com/yourusername/event_app.git
 ```
 
-2. **Run Project **
+
+
+2. **Add Firebase to the project**
+
+```
+Enable Google sign-in in Firebase Authentication
+```
+
+```
+Enable Firestore database and create documents "users" and give read and write permission
+```
+
+
+
+3. **Run Project **
    before running the project follow these commands
 ```
 flutter upgrade
