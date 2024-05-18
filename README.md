@@ -52,7 +52,14 @@ git clone https://github.com/yourusername/event_app.git
 
 2. **Run Project **
    before running the project follow these commands
-
+```
 flutter upgrade
+```
+
+```
 flutter clean
+```
+
+```
 flutter pub get
+```
