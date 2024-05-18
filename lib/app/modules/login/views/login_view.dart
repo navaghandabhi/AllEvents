@@ -1,8 +1,3 @@
-import 'package:all_events/app/data/extensions/widget_extensions.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-
 import '../../../data/all_events.dart';
 import '../controllers/login_controller.dart';
 
@@ -15,7 +10,10 @@ class LoginView extends GetView<LoginController> {
       backgroundColor: Colors.black,
       body: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage(Images.introScreen5), fit: BoxFit.cover, opacity: 0.3),
+          image: DecorationImage(
+              image: AssetImage(Images.introScreen5),
+              fit: BoxFit.cover,
+              opacity: 0.3),
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 60.0),
@@ -24,7 +22,10 @@ class LoginView extends GetView<LoginController> {
             children: [
               const Text(
                 'Sign In',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               // SizedBox(height: ),
               Image.asset(
@@ -33,7 +34,10 @@ class LoginView extends GetView<LoginController> {
               ),
               const Text(
                 'Discover amazing places in the world with us and enjoy your time',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.white),
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white),
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: Get.height * 0.1),
@@ -49,7 +53,7 @@ class LoginView extends GetView<LoginController> {
 
   Widget _signInButton() {
     return OutlinedButton.icon(
-      icon: SvgPicture.asset(
+      icon: Image.asset(
         Images.googleLogo,
         height: 32,
       ),
@@ -61,7 +65,9 @@ class LoginView extends GetView<LoginController> {
           borderRadius: BorderRadius.circular(26),
         ),
       ),
-      label: const Text("Sign In with Google", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+      label: const Text("Sign In with Google",
+          style: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
     ).toProgressIndicator(controller.isSigningIn);
   }
 }

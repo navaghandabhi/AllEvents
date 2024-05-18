@@ -52,8 +52,11 @@ class EventDetailsView extends GetView<HomeController> {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            event.tickets!.hasTickets! ? "${event.tickets!.ticketCurrency} ${event.tickets!.minTicketPrice}" : "Free",
-                            style: const TextStyle(color: ColorCode.greyDarkColor, fontSize: 22),
+                            event.tickets!.hasTickets!
+                                ? "${event.tickets!.ticketCurrency} ${event.tickets!.minTicketPrice}"
+                                : "Free",
+                            style: const TextStyle(
+                                color: ColorCode.greyDarkColor, fontSize: 22),
                           ),
                         ],
                       ),
@@ -61,23 +64,31 @@ class EventDetailsView extends GetView<HomeController> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if(![null,""," "].contains(event.tickets!.ticketUrl)){
-                              Get.to(()=> TicketBookView(uri: event.tickets!.ticketUrl ?? "",));
-                            }else{
-                              Get.rawSnackbar(message: "Ticket Url Not found.!");
+                            if (![null, "", " "]
+                                .contains(event.tickets!.ticketUrl)) {
+                              Get.to(() => TicketBookView(
+                                    uri: event.tickets!.ticketUrl ?? "",
+                                  ));
+                            } else {
+                              Get.rawSnackbar(
+                                  message: "Ticket Url Not found.!");
                             }
                           },
                           style: ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll(Get.theme.primaryColor),
+                              backgroundColor: WidgetStatePropertyAll(
+                                  Get.theme.primaryColor),
                               shape: WidgetStateProperty.all(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(8.0), // You can adjust the radius value as needed
+                                  borderRadius: BorderRadius.circular(
+                                      8.0), // You can adjust the radius value as needed
                                 ),
                               ),
-                              foregroundColor: const WidgetStatePropertyAll(Colors.white)),
+                              foregroundColor:
+                                  const WidgetStatePropertyAll(Colors.white)),
                           child: const Text(
                             "Book Tickets",
-                            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.bold),
                           ),
                         ),
                       ),
@@ -112,7 +123,8 @@ class EventDetailsView extends GetView<HomeController> {
       leading: Container(
         margin: const EdgeInsets.all(8),
         height: 36,
-        decoration: BoxDecoration(color: Colors.white.withOpacity(0.6), shape: BoxShape.circle),
+        decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.6), shape: BoxShape.circle),
         child: IconButton(
           padding: EdgeInsets.zero,
           visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
@@ -137,13 +149,15 @@ class EventDetailsView extends GetView<HomeController> {
                 const SizedBox(height: 12),
                 Text(
                   event.eventname ?? "",
-                  style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 22),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w800, fontSize: 22),
                 ),
                 const SizedBox(height: 12),
                 // get created by name from the owner id
                 const Text(
                   "Created by AllEvents Information's Private Limited",
-                  style: TextStyle(color: ColorCode.greyDarkColor, fontSize: 18),
+                  style:
+                      TextStyle(color: ColorCode.greyDarkColor, fontSize: 18),
                 ),
                 const SizedBox(height: 12),
                 _buttonsRow(),
@@ -153,10 +167,12 @@ class EventDetailsView extends GetView<HomeController> {
           ),
           Divider(color: ColorCode.greyLightColor.withOpacity(0.5)),
           ListTile(
-            leading: const Icon(Icons.access_time_rounded, color: ColorCode.greyDarkColor),
+            leading: const Icon(Icons.access_time_rounded,
+                color: ColorCode.greyDarkColor),
             title: Text(
               "${event.startTimeDisplay!} to ${event.endTimeDisplay!}",
-              style: const TextStyle(color: ColorCode.greyDarkColor, fontSize: 16),
+              style:
+                  const TextStyle(color: ColorCode.greyDarkColor, fontSize: 16),
             ),
           ),
           ExpandableTextTile(
@@ -172,7 +188,9 @@ class EventDetailsView extends GetView<HomeController> {
             ),
             child: Column(
               children: [
-                Text("About", style: TextStyle(fontWeight: FontWeight.w800, fontSize: 22)),
+                Text("About",
+                    style:
+                        TextStyle(fontWeight: FontWeight.w800, fontSize: 22)),
                 // Text(event.eventdescription ?? "", style: TextStyle(fontWeight: FontWeight.w800,color: ColorCode.greyDarkColor, fontSize: 18)),
               ],
             ),
@@ -196,9 +214,12 @@ class EventDetailsView extends GetView<HomeController> {
                 },
                 child: CustomIconButton(
                   key: ValueKey<bool>(controller.isFavoriteEvent.value),
-                  icon: controller.isFavoriteEvent.value ? Icons.star_outlined : Icons.star_border,
+                  icon: controller.isFavoriteEvent.value
+                      ? Icons.star_outlined
+                      : Icons.star_border,
                   onPressed: () {
-                    controller.isFavoriteEvent.value = !controller.isFavoriteEvent.value;
+                    controller.isFavoriteEvent.value =
+                        !controller.isFavoriteEvent.value;
                   },
                   color: Get.theme.primaryColor,
                   size: 36,
@@ -230,7 +251,8 @@ class EventDetailsView extends GetView<HomeController> {
             CustomIconButton(
               icon: Icons.share,
               onPressed: () {
-                controller.shareEventDetails(event.shareUrl ?? "${event.eventname}");
+                controller
+                    .shareEventDetails(event.shareUrl ?? "${event.eventname}");
               },
               color: Get.theme.primaryColor,
               size: 36,
@@ -266,7 +288,12 @@ class ExpandableTextTile extends StatefulWidget {
   final String longitude;
   final String address;
 
-  const ExpandableTextTile({super.key, required this.text, required this.latitude, required this.longitude, required this.address});
+  const ExpandableTextTile(
+      {super.key,
+      required this.text,
+      required this.latitude,
+      required this.longitude,
+      required this.address});
 
   @override
   State<ExpandableTextTile> createState() => _ExpandableTextTileState();
@@ -277,7 +304,8 @@ class _ExpandableTextTileState extends State<ExpandableTextTile> {
 
   Future<void> openMap() async {
     // String googleMapUrl = "https://www.google.com/maps/search/${widget.address.split(" ").join("+")}";
-    String googleMapUrl = "https://www.google.com/maps/search/${widget.latitude},${widget.longitude}";
+    String googleMapUrl =
+        "https://www.google.com/maps/search/${widget.latitude},${widget.longitude}";
     // String googleMapUrl = 'https://www.google.com/maps/search/?api=1&query=${widget.latitude},${widget.longitude}';
     try {
       await launchUrl(Uri.parse(googleMapUrl));
@@ -290,13 +318,15 @@ class _ExpandableTextTileState extends State<ExpandableTextTile> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-        leading: const Icon(Icons.location_on_outlined, color: ColorCode.greyDarkColor),
+        leading: const Icon(Icons.location_on_outlined,
+            color: ColorCode.greyDarkColor),
         title: LayoutBuilder(
           builder: (context, constraints) {
             // Calculate if the text exceeds two lines
             final span = TextSpan(
               text: widget.text,
-              style: const TextStyle(color: ColorCode.greyDarkColor, fontSize: 16),
+              style:
+                  const TextStyle(color: ColorCode.greyDarkColor, fontSize: 16),
             );
             final tp = TextPainter(
               text: span,

@@ -3,5 +3,6 @@ class IntroScreenData {
   final String subtitle;
   final String imagePath;
 
-  IntroScreenData({required this.title, required this.subtitle, required this.imagePath});
+  IntroScreenData(
+      {required this.title, required this.subtitle, required this.imagePath});
 }

@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../models/category_data_model.dart';
 import '../models/event_data_model.dart';
@@ -34,7 +33,8 @@ class HomeController extends GetxController {
   Future<void> getCategoryList() async {
     try {
       isLoadingEvent.value = true;
-      String baseUrl = "https://allevents.s3.amazonaws.com/tests/categories.json";
+      String baseUrl =
+          "https://allevents.s3.amazonaws.com/tests/categories.json";
       final Response response = await getConnect.get(baseUrl);
       if (response.statusCode == 200) {
         categoryList = categoryDataFromJson(response.bodyString!);
@@ -61,10 +61,8 @@ class HomeController extends GetxController {
       isLoadingEvent.value = false;
     }
   }
-  
-  void shareEventDetails(String text){
+
+  void shareEventDetails(String text) {
     Share.share(text);
   }
-
-
 }

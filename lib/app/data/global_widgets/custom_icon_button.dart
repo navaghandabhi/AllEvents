@@ -18,7 +18,8 @@ class CustomIconButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(8),
-      decoration: BoxDecoration(color: color.withOpacity(0.15), shape: BoxShape.circle),
+      decoration:
+          BoxDecoration(color: color.withOpacity(0.15), shape: BoxShape.circle),
       child: IconButton(
         icon: Icon(
           size: size,

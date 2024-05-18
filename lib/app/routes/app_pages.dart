@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-
-import '../data/constants/storage_strings.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/intro_screens/bindings/intro_screens_binding.dart';

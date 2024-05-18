@@ -23,7 +23,8 @@ class EventCardView extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(7),
-                border: Border.all(color: ColorCode.greyLightColor.withOpacity(0.2)),
+                border: Border.all(
+                    color: ColorCode.greyLightColor.withOpacity(0.2)),
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(6),
@@ -53,13 +54,19 @@ class EventCardView extends StatelessWidget {
                           ? event.venue!.fullAddress ?? ""
                           : event.venue!.city!.toString()
                       : "",
-                  style: const TextStyle(fontWeight: FontWeight.w500, color: ColorCode.greyDarkColor),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: ColorCode.greyDarkColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 Text(
-                  event.startTimeDisplay != null ? event.startTimeDisplay!.toString().substring(0, 15) : event.startTimeDisplay!.toString(),
-                  style: const TextStyle(fontWeight: FontWeight.w500, color: ColorCode.greyLightColor),
+                  event.startTimeDisplay != null
+                      ? event.startTimeDisplay!.toString().substring(0, 15)
+                      : event.startTimeDisplay!.toString(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500,
+                      color: ColorCode.greyLightColor),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -133,7 +140,7 @@ class EventCardForGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       child: InkWell(
         borderRadius: BorderRadius.circular(8),
@@ -149,7 +156,8 @@ class EventCardForGrid extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
-                  border: Border.all(color: ColorCode.greyLightColor.withOpacity(0.2)),
+                  border: Border.all(
+                      color: ColorCode.greyLightColor.withOpacity(0.2)),
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(6),

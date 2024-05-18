@@ -44,6 +44,7 @@ class _TicketBookViewState extends State<TicketBookView> {
     controller.clearLocalStorage();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return WebViewWidget(controller: controller);

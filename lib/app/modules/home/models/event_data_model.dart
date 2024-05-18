@@ -20,15 +20,20 @@ class EventData {
   });
 
   factory EventData.fromJson(Map<String, dynamic> json) => EventData(
-        request: json["request"] == null ? null : Request.fromJson(json["request"]),
+        request:
+            json["request"] == null ? null : Request.fromJson(json["request"]),
         count: json["count"],
-        eventList: json["item"] == null ? [] : List<Event>.from(json["item"]!.map((x) => Event.fromJson(x))),
+        eventList: json["item"] == null
+            ? []
+            : List<Event>.from(json["item"]!.map((x) => Event.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "request": request?.toJson(),
         "count": count,
-        "item": eventList == null ? [] : List<dynamic>.from(eventList!.map((x) => x.toJson())),
+        "item": eventList == null
+            ? []
+            : List<dynamic>.from(eventList!.map((x) => x.toJson())),
       };
 }
 
@@ -100,10 +105,17 @@ class Event {
         shareUrl: json["share_url"] ?? "",
         bannerUrl: json["banner_url"] ?? "",
         score: json["score"]?.toDouble(),
-        categories: json["categories"] == null ? [] : List<String>.from(json["categories"]!.map((x) => x)),
-        tags: json["tags"] == null ? [] : List<String>.from(json["tags"]!.map((x) => x)),
-        tickets: json["tickets"] == null ? null : Tickets.fromJson(json["tickets"]),
-        customParams: json["custom_params"] == null ? [] : List<dynamic>.from(json["custom_params"]!.map((x) => x)),
+        categories: json["categories"] == null
+            ? []
+            : List<String>.from(json["categories"]!.map((x) => x)),
+        tags: json["tags"] == null
+            ? []
+            : List<String>.from(json["tags"]!.map((x) => x)),
+        tickets:
+            json["tickets"] == null ? null : Tickets.fromJson(json["tickets"]),
+        customParams: json["custom_params"] == null
+            ? []
+            : List<dynamic>.from(json["custom_params"]!.map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -125,10 +137,14 @@ class Event {
         "share_url": shareUrl,
         "banner_url": bannerUrl,
         "score": score,
-        "categories": categories == null ? [] : List<dynamic>.from(categories!.map((x) => x)),
+        "categories": categories == null
+            ? []
+            : List<dynamic>.from(categories!.map((x) => x)),
         "tags": tags == null ? [] : List<dynamic>.from(tags!.map((x) => x)),
         "tickets": tickets?.toJson(),
-        "custom_params": customParams == null ? [] : List<dynamic>.from(customParams!.map((x) => x)),
+        "custom_params": customParams == null
+            ? []
+            : List<dynamic>.from(customParams!.map((x) => x)),
       };
 }
 

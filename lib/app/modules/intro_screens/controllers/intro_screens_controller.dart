@@ -11,7 +11,6 @@ class IntroScreensController extends GetxController {
     super.onClose();
   }
 
-
   List<IntroScreenData> introScreens = [
     IntroScreenData(
       title: "Discover Amazing Events",

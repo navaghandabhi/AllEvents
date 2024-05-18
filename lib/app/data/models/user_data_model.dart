@@ -29,7 +29,8 @@ class UserData extends BaseChatsData {
     phoneNumber = json['phoneNumber'] ?? "";
     langCode = json['langCode'] ?? "";
     language = json['language'] ?? "";
-    chatsList = json['chatsList'] == null ? [] : List<String>.from(json['chatsList']);
+    chatsList =
+        json['chatsList'] == null ? [] : List<String>.from(json['chatsList']);
     groups = json['groups'] == null ? [] : List<String>.from(json['groups']);
   }
 

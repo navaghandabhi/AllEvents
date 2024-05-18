@@ -21,7 +21,8 @@ class HomeView extends GetView<HomeController> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 children: [
-                  const SizedBox(height: 36), //for manage space in the status bar
+                  const SizedBox(
+                      height: 36), //for manage space in the status bar
                   _searchBar(),
                   const SizedBox(height: 8),
                   _filterButtons(),
@@ -43,7 +44,9 @@ class HomeView extends GetView<HomeController> {
       return Expanded(
         child: controller.eventList.isEmpty
             ? const Center(child: Text("No Events"))
-            : controller.eventList[controller.selectedCategory] == null || controller.eventList[controller.selectedCategory]!.eventList!.isEmpty
+            : controller.eventList[controller.selectedCategory] == null ||
+                    controller.eventList[controller.selectedCategory]!
+                        .eventList!.isEmpty
                 ? const Center(child: Text("No Events"))
                 : controller.isEventShowInList.value
                     ? _eventListViewBuilder()
@@ -60,9 +63,11 @@ class HomeView extends GetView<HomeController> {
       },
       controller: controller.eventScrollController,
       padding: const EdgeInsets.only(bottom: 8),
-      itemCount: controller.eventList[controller.selectedCategory]!.eventList!.length,
+      itemCount:
+          controller.eventList[controller.selectedCategory]!.eventList!.length,
       itemBuilder: (context, index) {
-        final Event event = controller.eventList[controller.selectedCategory]!.eventList![index];
+        final Event event = controller
+            .eventList[controller.selectedCategory]!.eventList![index];
         return EventCardView(event: event);
       },
     );
@@ -75,9 +80,11 @@ class HomeView extends GetView<HomeController> {
       controller: controller.eventScrollController,
       padding: const EdgeInsets.all(8),
       crossAxisCount: 2,
-      itemCount: controller.eventList[controller.selectedCategory]!.eventList!.length,
+      itemCount:
+          controller.eventList[controller.selectedCategory]!.eventList!.length,
       itemBuilder: (context, index) {
-        final Event event = controller.eventList[controller.selectedCategory]!.eventList![index];
+        final Event event = controller
+            .eventList[controller.selectedCategory]!.eventList![index];
         return EventCardForGrid(event: event);
       },
       mainAxisSpacing: 12.0,
@@ -91,7 +98,8 @@ class HomeView extends GetView<HomeController> {
       height: 44,
       child: TextField(
         decoration: InputDecoration(
-          border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(50.0))),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(50.0))),
           prefixIcon: Icon(
             Icons.search,
           ),
@@ -113,8 +121,11 @@ class HomeView extends GetView<HomeController> {
             _showCategoryFilterList();
           },
           label: Text(
-            controller.selectedCategory != "" ? controller.selectedCategory.capitalize! : "Category",
-            style: const TextStyle(fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor),
+            controller.selectedCategory != ""
+                ? controller.selectedCategory.capitalize!
+                : "Category",
+            style: const TextStyle(
+                fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor),
           ),
           icon: IconButton(
               padding: EdgeInsets.zero,
@@ -122,30 +133,47 @@ class HomeView extends GetView<HomeController> {
               onPressed: () {
                 if (controller.selectedCategory != "") {
                   controller.selectedCategory = controller.eventList.keys.first;
-                  controller.eventScrollController.position.animateTo(0, duration: const Duration(microseconds: 1000), curve: Curves.bounceInOut);
+                  controller.eventScrollController.position.animateTo(0,
+                      duration: const Duration(microseconds: 1000),
+                      curve: Curves.bounceInOut);
                   controller.update(["home"]);
                 } else {
                   _showCategoryFilterList();
                 }
               },
-              icon: Icon(controller.selectedCategory != "" ? Icons.close : Icons.keyboard_arrow_down_sharp, color: ColorCode.greyDarkColor)),
-          style: ButtonStyle(padding: WidgetStateProperty.all<EdgeInsets>(const EdgeInsets.only(left: 12, right: 8)), backgroundColor: controller.selectedCategory == "" ? const WidgetStatePropertyAll(Colors.white) : WidgetStatePropertyAll(Get.theme.primaryColor)),
+              icon: Icon(
+                  controller.selectedCategory != ""
+                      ? Icons.close
+                      : Icons.keyboard_arrow_down_sharp,
+                  color: ColorCode.greyDarkColor)),
+          style: ButtonStyle(
+              padding: WidgetStateProperty.all<EdgeInsets>(
+                  const EdgeInsets.only(left: 12, right: 8)),
+              backgroundColor: controller.selectedCategory == ""
+                  ? const WidgetStatePropertyAll(Colors.white)
+                  : WidgetStatePropertyAll(Get.theme.primaryColor)),
           iconAlignment: IconAlignment.end,
         ),
         OutlinedButton.icon(
           onPressed: () {
             _showDateFilterList();
           },
-          label: const Text("Date", style: TextStyle(fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor)),
-          icon: const Icon(Icons.keyboard_arrow_down_sharp, color: ColorCode.greyDarkColor),
+          label: const Text("Date",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor)),
+          icon: const Icon(Icons.keyboard_arrow_down_sharp,
+              color: ColorCode.greyDarkColor),
           iconAlignment: IconAlignment.end,
         ),
         OutlinedButton.icon(
           onPressed: () {
             _showPriceFilterList();
           },
-          label: const Text("Price", style: TextStyle(fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor)),
-          icon: const Icon(Icons.keyboard_arrow_down_sharp, color: ColorCode.greyDarkColor),
+          label: const Text("Price",
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: ColorCode.greyDarkColor)),
+          icon: const Icon(Icons.keyboard_arrow_down_sharp,
+              color: ColorCode.greyDarkColor),
           iconAlignment: IconAlignment.end,
         ),
       ],
@@ -167,8 +195,11 @@ class HomeView extends GetView<HomeController> {
                   children: [
                     ListTile(
                       onTap: () {
-                        controller.selectedCategory = controller.categoryList[index].category!;
-                        controller.eventScrollController.position.animateTo(0, duration: const Duration(microseconds: 1000), curve: Curves.bounceInOut);
+                        controller.selectedCategory =
+                            controller.categoryList[index].category!;
+                        controller.eventScrollController.position.animateTo(0,
+                            duration: const Duration(microseconds: 1000),
+                            curve: Curves.bounceInOut);
                         controller.update(["home"]);
                         Get.back();
                       },
@@ -176,9 +207,12 @@ class HomeView extends GetView<HomeController> {
                         controller.categoryList[index].category!.capitalize!,
                         style: const TextStyle(fontWeight: FontWeight.w500),
                       ),
-                      visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+                      visualDensity:
+                          const VisualDensity(horizontal: -4, vertical: -4),
                     ),
-                    index == controller.categoryList.length - 1 ? const SizedBox() : const Divider()
+                    index == controller.categoryList.length - 1
+                        ? const SizedBox()
+                        : const Divider()
                   ],
                 ),
               );
@@ -201,11 +235,14 @@ class HomeView extends GetView<HomeController> {
                     child: ActionChip(
                       onPressed: () {
                         controller.selectedCategory = category.category!;
-                        controller.eventScrollController.position.animateTo(0, duration: const Duration(microseconds: 1000), curve: Curves.bounceInOut);
+                        controller.eventScrollController.position.animateTo(0,
+                            duration: const Duration(microseconds: 1000),
+                            curve: Curves.bounceInOut);
                         controller.update(["home"]);
                         Get.back();
                       },
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
                       label: Text(category.category!.capitalize!),
                       color: WidgetStateProperty.all<Color>(Colors.white),
                     ),
@@ -232,7 +269,9 @@ class HomeView extends GetView<HomeController> {
                 child: Container(
                   width: Get.width * 0.2,
                   height: 5,
-                  decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               const SizedBox(height: 8),
@@ -247,29 +286,41 @@ class HomeView extends GetView<HomeController> {
                           Text.rich(
                             TextSpan(
                               children: [
-                                const TextSpan(text: 'Choose Your Preferred ', style: TextStyle(fontSize: 20)),
-                                TextSpan(text: 'Category', style: TextStyle(fontSize: 20, color: Get.theme.primaryColor)),
+                                const TextSpan(
+                                    text: 'Choose Your Preferred ',
+                                    style: TextStyle(fontSize: 20)),
+                                TextSpan(
+                                    text: 'Category',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        color: Get.theme.primaryColor)),
                               ],
                             ),
                           ),
                           IconButton(
                               onPressed: () {
-                                controller.isCategoryShowInList.value = !controller.isCategoryShowInList.value;
+                                controller.isCategoryShowInList.value =
+                                    !controller.isCategoryShowInList.value;
                               },
-                              icon: Icon(controller.isCategoryShowInList.value ? Icons.grid_view_rounded : Icons.view_list))
+                              icon: Icon(controller.isCategoryShowInList.value
+                                  ? Icons.grid_view_rounded
+                                  : Icons.view_list))
                         ],
                       ),
                     ),
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
+                      transitionBuilder:
+                          (Widget child, Animation<double> animation) {
                         return SizeTransition(
                           sizeFactor: animation,
                           axisAlignment: -1.0,
                           child: child,
                         );
                       },
-                      child: controller.isCategoryShowInList.value ? _categoryListInListTile() : _categoryListInChip(),
+                      child: controller.isCategoryShowInList.value
+                          ? _categoryListInListTile()
+                          : _categoryListInChip(),
                     ),
                   ],
                 );
@@ -297,7 +348,9 @@ class HomeView extends GetView<HomeController> {
                 child: Container(
                   width: Get.width * 0.2,
                   height: 5,
-                  decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               const SizedBox(height: 8),
@@ -308,8 +361,10 @@ class HomeView extends GetView<HomeController> {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Date Filter is Working",style: TextStyle(fontSize: 20),),
-
+                        Text(
+                          "Date Filter is Working",
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ],
                     ),
                   ),
@@ -338,7 +393,9 @@ class HomeView extends GetView<HomeController> {
                 child: Container(
                   width: Get.width * 0.2,
                   height: 5,
-                  decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: Colors.grey,
+                      borderRadius: BorderRadius.circular(10)),
                 ),
               ),
               const SizedBox(height: 8),
@@ -349,8 +406,10 @@ class HomeView extends GetView<HomeController> {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Price Filter is Working",style: TextStyle(fontSize: 20),),
-
+                        Text(
+                          "Price Filter is Working",
+                          style: TextStyle(fontSize: 20),
+                        ),
                       ],
                     ),
                   ),
@@ -397,17 +456,30 @@ class HomeView extends GetView<HomeController> {
                 Text.rich(
                   TextSpan(
                     children: [
-                      const TextSpan(text: 'Events around ', style: TextStyle(fontSize: 20)),
-                      TextSpan(text: controller.eventList[controller.selectedCategory]!.request!.city!.capitalize ?? 'Your City', style: TextStyle(fontSize: 20, color: Get.theme.primaryColor)),
+                      const TextSpan(
+                          text: 'Events around ',
+                          style: TextStyle(fontSize: 20)),
+                      TextSpan(
+                          text: controller
+                                  .eventList[controller.selectedCategory]!
+                                  .request!
+                                  .city!
+                                  .capitalize ??
+                              'Your City',
+                          style: TextStyle(
+                              fontSize: 20, color: Get.theme.primaryColor)),
                     ],
                   ),
                 ),
                 IconButton(
                     onPressed: () {
-                      controller.isEventShowInList.value = !controller.isEventShowInList.value;
+                      controller.isEventShowInList.value =
+                          !controller.isEventShowInList.value;
                       controller.update(["home"]);
                     },
-                    icon: Icon(controller.isEventShowInList.value ? Icons.grid_view_rounded : Icons.view_list))
+                    icon: Icon(controller.isEventShowInList.value
+                        ? Icons.grid_view_rounded
+                        : Icons.view_list))
               ],
             ),
           );

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 import '../../../data/all_events.dart';
 import '../../../routes/app_pages.dart';
@@ -92,7 +90,11 @@ class IntroScreensView extends GetView<IntroScreensController> {
                 );
               }
             },
-            child: Text(index == 0 ? "Skip" : "Back", style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+            child: Text(index == 0 ? "Skip" : "Back",
+                style: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
           ),
           const SizedBox(width: 32),
           CustomButton(
@@ -106,7 +108,9 @@ class IntroScreensView extends GetView<IntroScreensController> {
                 );
               }
             },
-            label: index == controller.introScreens.length - 1 ? "Get Started" : "Next",
+            label: index == controller.introScreens.length - 1
+                ? "Get Started"
+                : "Next",
           ),
         ],
       ),
