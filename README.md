@@ -47,8 +47,9 @@ Please make sure to use the latest version of Flutter 3.22.0
 ### Installation
 
 1. **Clone the repository:**
-
+```
 git clone https://github.com/yourusername/event_app.git
+```
 
 2. **Run Project **
    before running the project follow these commands
@@ -62,4 +63,8 @@ flutter clean
 
 ```
 flutter pub get
+```
+
+```
+flutter run
 ```
