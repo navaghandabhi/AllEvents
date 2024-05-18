@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "279800608618",
+    "project_id": "allevents-80caf",
+    "storage_bucket": "allevents-80caf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:279800608618:android:015d108c456317badc1713",
+        "android_client_info": {
+          "package_name": "com.allevents.all_events"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYbJjYgk8sPPCKtH7Mmiz2dFvtOnynHhw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
